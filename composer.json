@@ -1,6 +1,6 @@
 {
     "name": "sunaoka/php-documentor3-template-ja",
-    "description" : "PHP documentation generator, with markdown output",
+    "description" : "phpDocumentor 3 Japanese templates",
     "keywords" : [ "PHP", "phpDocumentor", "template", "Japanese" ],
     "type": "library",
     "license": "MIT",
