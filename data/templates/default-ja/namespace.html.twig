@@ -3,10 +3,10 @@
 {% block content %}
     {% include 'components/breadcrumbs.html.twig' %}
 
-    <h2 class="phpdocumentor-content__title">{{ node.name == '\\' ? 'API Documentation' : node.name }}</h2>
+    <h2 class="phpdocumentor-content__title">{{ node.name == '\\' ? 'API ドキュメント' : node.name }}</h2>
 
     {% if node.children is not empty %}
-        <h3>Namespaces</h3>
+        <h3>名前空間</h3>
         <dl>
             {% for namespace in node.children %}
                 <dt>{{ namespace|route('class:short') }}</dt>
@@ -15,7 +15,7 @@
     {% endif %}
 
     {% if node.interfaces is not empty or node.classes is not empty %}
-        <h3>Interfaces, Classes and Traits</h3>
+        <h3>インターフェイス、クラス、トレイト</h3>
         <dl>
             {% for interface in node.interfaces %}
                 <dt>{{ interface|route('class:short') }}</dt>
@@ -39,7 +39,7 @@
     {% endif %}
 
     {% if node.constants is not empty %}
-        <h3>Constants</h3>
+        <h3>定数</h3>
         <ul>
             {% for constant in node.constants %}
                 <li><a href="{{ link(constant) }}">{{ constant.name }}</a></li>
@@ -49,7 +49,7 @@
 
     {% if node.functions is not empty %}
         <section>
-            <h3 class="phpdocumentor-functions__header">Functions</h3>
+            <h3 class="phpdocumentor-functions__header">関数</h3>
             {% for function in node.functions %}
                 {% include 'function.html.twig' %}
             {% endfor %}

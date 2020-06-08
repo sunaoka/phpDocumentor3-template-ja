@@ -12,10 +12,10 @@
 </ul>
 
 <div class="phpdocumentor-row">
-    <h2 class="phpdocumentor-content__title">Errors</h2>
+    <h2 class="phpdocumentor-content__title">エラー</h2>
 
     {% if filesWithErrors is not empty %}
-    <h3>Table of Contents</h3>
+    <h3>目次</h3>
     <table class="phpdocumentor-table_of_contents">
         {% set errorCount = 0 %}
         {% for file in project.files|filter(file => file.allErrors is not empty) %}
@@ -31,7 +31,7 @@
     {% endif %}
 
     {% if errorCount <= 0 %}
-        <div class="phpdocumentor-admonition phpdocumentor-admonition--success">No errors have been found in this project.</div>
+        <div class="phpdocumentor-admonition phpdocumentor-admonition--success">このプロジェクトではエラーは見つかりませんでした。</div>
     {% endif %}
 
     {% for file in filesWithErrors %}
@@ -40,9 +40,9 @@
         <table>
             <thead>
                 <tr>
-                    <th class="phpdocumentor-heading">Type</th>
-                    <th class="phpdocumentor-heading">Line</th>
-                    <th class="phpdocumentor-heading">Description</th>
+                    <th class="phpdocumentor-heading">種類</th>
+                    <th class="phpdocumentor-heading">行</th>
+                    <th class="phpdocumentor-heading">説明</th>
                 </tr>
             </thead>
             <tbody>
