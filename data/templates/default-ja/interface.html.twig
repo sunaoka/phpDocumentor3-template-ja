@@ -37,7 +37,7 @@
 
         {% if node.constants is not empty %}
             <section>
-                <h3 class="phpdocumentor-constants__header">Constants</h3>
+                <h3 class="phpdocumentor-constants__header">定数</h3>
                 {% for constant in node.constants %}
                     {% include 'constant.html.twig' %}
                 {% endfor %}
@@ -49,7 +49,7 @@
 
         {% if node.properties is not empty or node.magicProperties is not empty or node.inheritedProperties is not empty %}
             <section>
-                <h3 class="phpdocumentor-properties__header">Properties</h3>
+                <h3 class="phpdocumentor-properties__header">プロパティ</h3>
                 {% for property in node.properties %}
                     {% include 'property.html.twig' %}
                 {% endfor %}
@@ -64,7 +64,7 @@
 
         {% if node.methods is not empty or node.magicMethods is not empty or node.inheritedMethods is not empty %}
             <section>
-                <h3 class="phpdocumentor-methods__header">Methods</h3>
+                <h3 class="phpdocumentor-methods__header">メソッド</h3>
                 {% for method in node.methods %}
                     {% include 'method.html.twig' %}
                 {% endfor %}

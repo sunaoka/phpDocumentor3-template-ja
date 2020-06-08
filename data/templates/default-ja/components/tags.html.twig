@@ -1,7 +1,7 @@
 {% set tags = tags|filter((v,k) => k not in ['var', 'param', 'return', 'package']) %}
 
 {% if tags|length > 0 %}
-    <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+    <h5 class="phpdocumentor-tag-list__heading">タグ</h5>
     <dl class="phpdocumentor-tag-list">
         {% for name,seriesOfTag in tags %}
             {% for tag in seriesOfTag %}
