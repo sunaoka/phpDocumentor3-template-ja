@@ -1,0 +1,29 @@
+{
+    "name": "sunaoka/php-documentor3-template-ja",
+    "description" : "PHP documentation generator, with markdown output",
+    "keywords" : [ "PHP", "phpDocumentor", "template", "Japanese" ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sunaoka",
+            "email": "sunaoka@pocari.org"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5"
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "^3.0.0-rc"
+    },
+    "minimum-stability": "dev",
+    "config": {
+        "sort-packages": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "platform": {
+            "php": "7.2.5"
+        }
+    }
+}
