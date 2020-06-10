@@ -6,6 +6,8 @@
 
 ---
 
+This is a Japanese translation of the [phpDocumentor](https://github.com/phpDocumentor/phpDocumentor) (v3.x) template.
+
 ## Installation
 
 ```bash
@@ -20,7 +22,7 @@ composer require --dev sunaoka/php-documentor3-template-ja
 phive install --force-accept-unsigned phpDocumentor
 php tools/phpDocumentor \
     -d src \
-    -t output --template vendor/sunaoka/php-documentor3-template-ja/data/templates/default-ja       
+    -t output --template vendor/sunaoka/php-documentor3-template-ja/default-ja       
 ```
 
 ### Using the PHAR
@@ -29,7 +31,7 @@ php tools/phpDocumentor \
 curl -L -O https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-rc/phpDocumentor.phar
 php phpDocumentor.phar \
     -d src \
-    -t output --template vendor/sunaoka/php-documentor3-template-ja/data/templates/default-ja       
+    -t output --template vendor/sunaoka/php-documentor3-template-ja/default-ja       
 ```
 
 ### Via Docker
@@ -38,7 +40,7 @@ php phpDocumentor.phar \
 docker run --rm -v $(pwd):/data phpdoc/phpdoc:3 \
     -d src \
     -t output \
-    --template /data/vendor/sunaoka/php-documentor3-template-ja/data/templates/default-ja
+    --template /data/vendor/sunaoka/php-documentor3-template-ja/default-ja
 ```
 
 ### Via Composer (not recommended)
@@ -48,5 +50,5 @@ composer require --dev phpdocumentor/phpdocumentor 3.0.0-rc
 vendor/bin/phpdoc \
     -d src \
     -t output \
-    --template vendor/sunaoka/php-documentor3-template-ja/data/templates/default-ja       
+    --template vendor/sunaoka/php-documentor3-template-ja/default-ja       
 ```
