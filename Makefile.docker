@@ -2,7 +2,6 @@ SRC       := vendor/phpdocumentor/phpdocumentor/src/phpDocumentor
 
 OUTPUT    := example
 CACHES    := $(OUTPUT)/.cache
-TEMPLATES := data/templates
 MOUNT     := /data
 
 TITLE     := 'テンプレート日本語化'
@@ -14,7 +13,7 @@ default-ja:
 		-d $(SRC) \
 		-t $(OUTPUT)/$@ \
 		--cache-folder $(CACHES)/$@ \
-		--template $(MOUNT)/$(TEMPLATES)/$@ \
+		--template $(MOUNT)/$@ \
 		--title $(TITLE) \
 		--force
 
