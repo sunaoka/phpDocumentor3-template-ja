@@ -1,7 +1,10 @@
-{% set tags = tags|filter((v,k) => k not in ['var', 'param', 'return', 'package']) %}
+{% set tags = node.tags|filter((v,k) => k not in ['var', 'param', 'property', 'property-read', 'property-write', 'method', 'return', 'package', 'api']) %}
 
 {% if tags|length > 0 %}
-    <h5 class="phpdocumentor-tag-list__heading">タグ</h5>
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        タグ
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
     <dl class="phpdocumentor-tag-list">
         {% for name,seriesOfTag in tags %}
             {% for tag in seriesOfTag %}
@@ -19,9 +22,12 @@
                         <span class="phpdocumentor-tag-link">{{ tag.reference|route('class:short')|join('|')|raw }}</span>
                     {% endif %}
                     {% if tag.link %}
-                        <a class="phpdocumentor-tag-link" href="{{ tag.link }}">{{ tag.link }}</a>
+                        <a class="phpdocumentor-tag-link" href="{{ tag.link }}">{% if tag.description is not empty %} {{ tag.description | description | markdown }} {% else %} {{ tag.link }} {%  endif %}</a>
                     {% endif %}
-                    <section class="phpdocumentor-description">{{ tag.description|default('')|markdown }}</section>
+
+                    {% if not tag.link %}
+                         {{ include('components/description.html.twig', {'node': tag}) }}
+                    {% endif %}
                 </dd>
             {% endfor %}
         {% endfor %}

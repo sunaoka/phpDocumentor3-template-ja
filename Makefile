@@ -15,7 +15,8 @@ default-ja:
 		--cache-folder $(CACHES)/$@ \
 		--template $@ \
 		--title $(TITLE) \
-		--force
+		--force \
+		--setting=graphs.enabled=true
 
 clean:
 	-$(RM) -r $(OUTPUT)

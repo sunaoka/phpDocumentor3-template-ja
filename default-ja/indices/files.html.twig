@@ -3,7 +3,7 @@
 {% block content %}
     {% set orderedFiles = project.files|sort((a,b) => a.name <=> b.name) %}
 
-    <h2>ファイル</h2>
+    <h2 class="phpdocumentor-content__title">ファイル</h2>
     {% for letter in range('a', 'z') %}
         {% set filesStartingWith = orderedFiles|filter(v => v.name|first|lower == letter) %}
         {% if filesStartingWith is not empty %}
