@@ -1,36 +1,75 @@
-<h3>目次</h3>
+{% if packages|default([]) is not empty %}
+<h3 id="packages">
+    パッケージ
+    <a href="#packages" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
 
-<dl class="phpdocumentor-table_of_contents">
-    {% for constant in node.constants|default([]) %}
-            <dt><a href="{{ link(constant) }}">{{ constant.name }}</a> = {{ constant.value }}</dt>
-            <dd>{{ constant.summary }}</dd>
-    {% endfor %}
-    {% for property in node.properties|default([]) %}
-            <dt><a href="{{ link(property) }}">${{ property.name }}</a> : {{ property.type|route('class:short')|join('|')|raw }}</dt>
-            <dd>{{ property.summary }}</dd>
-    {% endfor %}
-    {% for property in node.magicProperties|default([]) %}
-            <dt><a href="{{ link(property) }}">${{ property.name }}</a> : {{ property.type|route('class:short')|join('|')|raw }}</dt>
-            <dd>{{ property.summary }}</dd>
-    {% endfor %}
-    {% for property in node.inheritedProperties|default([]) %}
-            <dt><a href="{{ link(property) }}">${{ property.name }}</a> : {{ property.type|route('class:short')|join('|')|raw }}</dt>
-            <dd>{{ property.summary }}</dd>
-    {% endfor %}
-    {% for method in node.methods|default([]) %}
-            <dt><a href="{{ link(method) }}">{{ method.name }}()</a> : {{ method.response.type|route('class:short')|join('|')|raw }}</dt>
-            <dd>{{ method.summary }}</dd>
-    {% endfor %}
-    {% for method in node.magicMethods|default([]) %}
-            <dt><a href="{{ link(method) }}">{{ method.name }}()</a> : {{ method.response.type|route('class:short')|join('|')|raw }}</dt>
-            <dd>{{ method.summary }}</dd>
-    {% endfor %}
-    {% for method in node.inheritedMethods|default([]) %}
-            <dt><a href="{{ link(method) }}">{{ method.name }}()</a> : {{ method.response.type|route('class:short')|join('|')|raw }}</dt>
-            <dd>{{ method.summary }}</dd>
-    {% endfor %}
-    {% for function in node.functions|default([]) %}
-            <dt>{{ function|route('class:short') }} : {{ function.type|route('class:short'|join('|')|raw) }}</dt>
-            <dd>{{ function.summary }}</dd>
+<dl class="phpdocumentor-table-of-contents">
+    {% for package in packages %}
+        <dt class="phpdocumentor-table-of-contents__entry -package">{{ package|route('class:short') }}</dt>
     {% endfor %}
 </dl>
+{% endif %}
+
+{% if namespaces|default([]) is not empty %}
+<h3 id="namespaces">
+    名前空間
+    <a href="#namespaces" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+    {% for namespace in namespaces %}
+        <dt class="phpdocumentor-table-of-contents__entry -namespace">{{ namespace|route('class:short') }}</dt>
+    {% endfor %}
+</dl>
+{% endif %}
+
+{% if node.interfaces is not empty or node.classes is not empty or node.traits is not empty %}
+<h3 id="interfaces_class_traits">
+    インターフェイス、クラス、トレイト
+    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+    {% for interface in node.interfaces %}
+        <dt class="phpdocumentor-table-of-contents__entry -interface">{{ interface|route('class:short') }}</dt>
+        <dd>{{ interface.summary }}</dd>
+    {% endfor %}
+
+    {% for class in node.classes %}
+        <dt class="phpdocumentor-table-of-contents__entry -class">{{ class|route('class:short') }}</dt>
+        <dd>{{ class.summary }}</dd>
+    {% endfor %}
+
+    {% for trait in node.traits %}
+        <dt class="phpdocumentor-table-of-contents__entry -trait">{{ trait|route('class:short') }}</dt>
+        <dd>{{ trait.summary }}</dd>
+    {% endfor %}
+</dl>
+{% endif %}
+
+{% set constants = constants(node) %}
+{% set properties = properties(node) %}
+{% set methods = methods(node) %}
+
+{% if constants is not empty or node.functions is not empty or methods is not empty or properties is not empty %}
+<h3 id="toc">
+    目次
+    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+    {% for constant in constants(node)|sortByVisibility %}
+        {{ include('components/table-of-contents-entry.html.twig', {'type': 'constant', 'node': constant}) }}
+    {% endfor %}
+    {% for property in properties(node)|sortByVisibility %}
+        {{ include('components/table-of-contents-entry.html.twig', {'type': 'property', 'node': property}) }}
+    {% endfor %}
+    {% for method in methods(node)|sortByVisibility %}
+        {{ include('components/table-of-contents-entry.html.twig', {'type': 'method', 'node': method}) }}
+    {% endfor %}
+    {% for function in node.functions|default([]) %}
+        {{ include('components/table-of-contents-entry.html.twig', {'type': 'function', 'node': function}) }}
+    {% endfor %}
+</dl>
+{% endif %}

@@ -22,22 +22,22 @@ composer require --dev sunaoka/php-documentor3-template-ja
 phive install --force-accept-unsigned phpDocumentor
 php tools/phpDocumentor \
     -d src \
-    -t output --template vendor/sunaoka/php-documentor3-template-ja/default-ja       
+    -t output --template vendor/sunaoka/php-documentor3-template-ja/default-ja
 ```
 
 ### Using the PHAR
 
 ```bash
-curl -L -O https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.0.0-rc/phpDocumentor.phar
+curl -L -O https://github.com/phpDocumentor/phpDocumentor/releases/download/v3.1.0/phpDocumentor.phar
 php phpDocumentor.phar \
     -d src \
-    -t output --template vendor/sunaoka/php-documentor3-template-ja/default-ja       
+    -t output --template vendor/sunaoka/php-documentor3-template-ja/default-ja
 ```
 
 ### Via Docker
 
 ```bash
-docker run --rm -v $(pwd):/data phpdoc/phpdoc:3 \
+docker run --rm -v $(pwd):/data phpdoc/phpdoc \
     -d src \
     -t output \
     --template /data/vendor/sunaoka/php-documentor3-template-ja/default-ja
@@ -46,9 +46,9 @@ docker run --rm -v $(pwd):/data phpdoc/phpdoc:3 \
 ### Via Composer (not recommended)
 
 ```bash
-composer require --dev phpdocumentor/phpdocumentor 3.0.0-rc
+composer require --dev phpdocumentor/phpdocumentor
 vendor/bin/phpdoc \
     -d src \
     -t output \
-    --template vendor/sunaoka/php-documentor3-template-ja/default-ja       
+    --template vendor/sunaoka/php-documentor3-template-ja/default-ja
 ```
