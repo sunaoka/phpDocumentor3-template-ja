@@ -1,7 +1,6 @@
 # phpDocumentor 3 Japanese templates
 
 [![Latest Stable Version](https://poser.pugx.org/sunaoka/php-documentor3-template-ja/v/stable)](https://packagist.org/packages/sunaoka/php-documentor3-template-ja)
-[![Latest Unstable Version](https://poser.pugx.org/sunaoka/php-documentor3-template-ja/v/unstable)](//packagist.org/packages/sunaoka/php-documentor3-template-ja)
 [![License](https://poser.pugx.org/sunaoka/php-documentor3-template-ja/license)](https://packagist.org/packages/sunaoka/php-documentor3-template-ja)
 
 ---
