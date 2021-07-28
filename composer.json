@@ -19,8 +19,6 @@
     "minimum-stability": "dev",
     "config": {
         "sort-packages": true,
-        "preferred-install": {
-            "*": "dist"
-        }
+        "preferred-install": "dist"
     }
 }
