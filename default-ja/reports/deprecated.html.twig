@@ -8,12 +8,12 @@
 %}
 
 {% block title %}
-    {{ project.name }} &raquo; 非推奨の要素
+    {{ project.name }} &raquo; 非推奨要素
 {% endblock %}
 
 {% block content %}
     <ul class="phpdocumentor-breadcrumbs">
-        <li><a href="{{ path("/index.html") }}">Home</a></li>
+        <li><a href="{{ path("/") }}">ホーム</a></li>
     </ul>
 
     <div class="phpdocumentor-row">
@@ -24,7 +24,7 @@
         <table class="phpdocumentor-table_of_contents">
             {% for file in filesWithDeprecatedElements %}
                 <tr>
-                    <td class="phpdocumentor-cell"><a href="#{{ file.path }}">{{ file.path }}</a></td>
+                    <td class="phpdocumentor-cell"><a href="{{ target_path }}#{{ file.path }}">{{ file.path }}</a></td>
                 </tr>
             {% endfor %}
         </table>
@@ -44,14 +44,14 @@
                         <tr>
                             <td class="phpdocumentor-cell">{{ element.line }}</td>
                             <td class="phpdocumentor-cell">{{ element|route}}</td>
-                            <td class="phpdocumentor-cell">{{ tag.description }}</td>
+                            <td class="phpdocumentor-cell">{{ tag.description | description | markdown }}</td>
                         </tr>
                     {% endfor %}
                 {% endfor %}
             </table>
         {% else %}
             <div class="phpdocumentor-admonition phpdocumentor-admonition--success">
-                このプロジェクトでは、非推奨の要素は見つかりませんでした。
+                このプロジェクトには非推奨の要素はありません。
             </div>
         {% endfor %}
     </div>

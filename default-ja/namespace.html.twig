@@ -3,56 +3,10 @@
 {% block content %}
     {% include 'components/breadcrumbs.html.twig' %}
 
-    <h2 class="phpdocumentor-content__title">{{ node.name == '\\' ? 'API ドキュメント' : node.name }}</h2>
-
-    {% if node.children is not empty %}
-        <h3>名前空間</h3>
-        <dl>
-            {% for namespace in node.children %}
-                <dt>{{ namespace|route('class:short') }}</dt>
-            {% endfor %}
-        </dl>
-    {% endif %}
-
-    {% if node.interfaces is not empty or node.classes is not empty %}
-        <h3>インターフェイス、クラス、トレイト</h3>
-        <dl>
-            {% for interface in node.interfaces %}
-                <dt>{{ interface|route('class:short') }}</dt>
-                <dd>{{ interface.summary }}</dd>
-            {% endfor %}
-
-            {% for class in node.classes %}
-                <dt>{{ class|route('class:short') }}</dt>
-                <dd>{{ class.summary }}</dd>
-            {% endfor %}
-
-            {% for trait in node.traits %}
-                <dt>{{ trait|route('class:short') }}</dt>
-                <dd>{{ trait.summary }}</dd>
-            {% endfor %}
-        </dl>
-    {% endif %}
-
-    {% if node.constants is not empty or node.functions is not empty %}
-        {{ include ('components/table-of-contents.html.twig') }}
-    {% endif %}
-
-    {% if node.constants is not empty %}
-        <h3>定数</h3>
-        <ul>
-            {% for constant in node.constants %}
-                <li><a href="{{ link(constant) }}">{{ constant.name }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if node.functions is not empty %}
-        <section>
-            <h3 class="phpdocumentor-functions__header">関数</h3>
-            {% for function in node.functions %}
-                {% include 'function.html.twig' %}
-            {% endfor %}
-        </section>
-    {% endif %}
+    <article class="phpdocumentor-element -namespace">
+        {{ include('components/namespace-title.html.twig') }}
+        {{ include('components/table-of-contents.html.twig', {'namespaces': node.children}) }}
+        {{ include('components/constants.html.twig') }}
+        {{ include('components/functions.html.twig') }}
+    </article>
 {% endblock %}
