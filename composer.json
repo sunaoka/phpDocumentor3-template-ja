@@ -11,19 +11,16 @@
         }
     ],
     "require": {
-        "php": ">=7.2.5"
+        "php": ">=7.2.5||^8.0"
     },
     "require-dev": {
-        "phpdocumentor/phpdocumentor": "^3.0.0-rc"
+        "phpdocumentor/phpdocumentor": "^3.0.0"
     },
     "minimum-stability": "dev",
     "config": {
         "sort-packages": true,
         "preferred-install": {
             "*": "dist"
-        },
-        "platform": {
-            "php": "7.2.5"
         }
     }
 }
